@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, Button, Dimensions } from 'react-native';
+import {connect} from 'react-redux';
+import { push } from 'react-router-redux'
 
 import logo from './logo.svg';
 import './App.css';
@@ -27,7 +29,7 @@ class App extends Component {
                          <Text style={styles.author}>{book.volumeInfo.authors}</Text>
                      </View>
                      <Button
-                      onPress={()=> {alert('Hello World')}}
+                      onPress={()=> this.props.dispatch(push('/about'))}
                       title="Learn More"
                       color="#841584"
                       accessibilityLabel="Learn more about this purple button"
@@ -81,4 +83,10 @@ const styles = StyleSheet.create({
 
 })
 
-export default App;
+
+const mapStateToProps = (state, props) => ({
+
+})
+
+
+export default connect(mapStateToProps)(App);
